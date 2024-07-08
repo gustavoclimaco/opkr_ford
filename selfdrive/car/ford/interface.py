@@ -62,11 +62,6 @@ class CarInterface(CarInterfaceBase):
       ret.mass = 1350
 
     elif candidate == CAR.MAVERICK_MK1:
-      ret.wheelbase = 3.076
-      ret.steerRatio = 17.0
-      ret.mass = 1650
-  
-    elif candidate == CAR.FUSION_RT:
       ret.wheelbase = 2.85
       ret.steerRatio = 16.7
       ret.mass = 1691
