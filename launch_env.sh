@@ -19,3 +19,5 @@ export STAGING_ROOT="/data/safe_staging"
 if [ -f "/data/params/d/MapboxToken" ]; then
   export MAPBOX_TOKEN=$(cat /data/params/d/MapboxToken)
 fi
+
+export FINGERPRINT="MAVERICK_MK1"
