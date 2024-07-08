@@ -65,6 +65,11 @@ class CarInterface(CarInterfaceBase):
       ret.wheelbase = 3.076
       ret.steerRatio = 17.0
       ret.mass = 1650
+  
+    elif candidate == CAR.FUSION_RT:
+      ret.wheelbase = 2.85
+      ret.steerRatio = 16.7
+      ret.mass = 1691
 
     else:
       raise ValueError(f"Unsupported car: {candidate}")
@@ -74,8 +79,9 @@ class CarInterface(CarInterfaceBase):
     if Ecu.shiftByWire in found_ecus or 0x5A in fingerprint[CAN.main] or docs:
       ret.transmissionType = TransmissionType.automatic
     else:
-      ret.transmissionType = TransmissionType.manual
-      ret.minEnableSpeed = 20.0 * CV.MPH_TO_MS
+      ret.transmissionType = TransmissionType.automatic
+      #ret.transmissionType = TransmissionType.manual
+      #ret.minEnableSpeed = 20.0 * CV.MPH_TO_MS
 
     # BSM: Side_Detect_L_Stat, Side_Detect_R_Stat
     # TODO: detect bsm in car_fw?

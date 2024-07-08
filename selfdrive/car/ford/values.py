@@ -47,6 +47,7 @@ class CAR(StrEnum):
   F_150_MK14 = "FORD F-150 14TH GEN"
   FOCUS_MK4 = "FORD FOCUS 4TH GEN"
   MAVERICK_MK1 = "FORD MAVERICK 1ST GEN"
+  FUSION_RT = "FORD FUSION RETROFITED"
 
 
 CANFD_CAR = {CAR.F_150_MK14}
@@ -97,6 +98,11 @@ CAR_INFO: Dict[str, Union[CarInfo, List[CarInfo]]] = {
     FordCarInfo("Ford Maverick 2022", "LARIAT Luxury"),
     FordCarInfo("Ford Maverick 2023", "Co-Pilot360 Assist"),
   ],
+  CAR.FUSION_RT:
+    [
+      FordCarInfo("Ford Fusion AWD 2016 - 2019", "Co-Pilot360 Assist"),
+      FordCarInfo("Ford Fusion Hybrid 2016 - 2019", "Co-Pilot360 Assist"),
+    ],
 }
 
 FW_QUERY_CONFIG = FwQueryConfig(
@@ -245,6 +251,24 @@ FW_VERSIONS = {
     ],
     (Ecu.engine, 0x7E0, None): [
       b'JX6A-14C204-BPL\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+    ],
+  },
+  CAR.FUSION_RT: {
+    (Ecu.eps, 0x730, None): [
+      b'K2GC-14D003-AJ\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', #STRATEGY_FUSION_HYBRID_AWD2017_PSCM
+    ],
+    (Ecu.abs, 0x760, None): [
+      b'HG9C-2D053-AH\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', #STRATEGY_FUSION_HYBRID_ABS
+      b'HG9C-2D053-MG\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', #STRATEGY_FUSION_AWD2017_ABS
+    ],
+    (Ecu.fwdRadar, 0x764, None): [
+      b'LB5T-14D049-AB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',#STRATEGY_FUSION_HYBRID_AWD2017_RADAR
+    ],
+    (Ecu.fwdCamera, 0x706, None): [
+      b'KT4T-14F397-AE\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', #STRATEGY_FUSION_HYBRID_AWD2017_CAMERA
+    ],
+    (Ecu.engine, 0x7E0, None): [
+      b'HS7A-14C204-ADH\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', #STRATEGY_FUSION_AWD2017_PCM
     ],
   },
   CAR.MAVERICK_MK1: {
